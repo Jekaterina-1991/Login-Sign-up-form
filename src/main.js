@@ -16,6 +16,13 @@ function setInputError(inputElement, message) {
   ).textContent = message;
 }
 
+function clearInputError(inputElement, message) {
+  inputElement.classList.remove("form__input--error");
+  inputElement.parentElement.querySelector(
+    ".form__input-error-message"
+  ).textContent = "";
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   const loginForm = document.querySelector("#login");
   const createAccountForm = document.querySelector("#createAccount");
@@ -54,6 +61,10 @@ document.addEventListener("DOMContentLoaded", () => {
           "Username must be at least 10 characters in length"
         );
       }
+    });
+
+    inputElement.addEventListener("input", (e) => {
+      clearInputError(inputElement);
     });
   });
 });
